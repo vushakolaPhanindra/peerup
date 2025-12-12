@@ -5,198 +5,463 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Peerup — Premium Domain For Sale</title>
+  <title>Peerup.in — Premium Domain For Sale</title>
   <meta name="description" content="Peerup.in domain is for sale. Contact to make an offer." />
-  <meta name="author" content="Peerup" />
 
-  <meta property="og:title" content="Peerup — Domain For Sale" />
-  <meta property="og:description" content="The domain Peerup.in is available. Contact to buy." />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
   <style>
     :root {
-      --bg1: #08112a;
-      --bg2: #0f274a;
-      --accent: #6ee7b7;
-      --glass: rgba(255, 255, 255, 0.06);
-      --glass2: rgba(255, 255, 255, 0.03);
-      --text: #e6f0ff;
-      --muted: #a8bdd9;
-      --card-radius: 18px;
-      font-family: Inter, ui-sans-serif, system-ui;
+      --bg-dark: #050b14;
+      --card-bg: rgba(20, 25, 40, 0.6);
+      --primary: #2dd4bf; /* Teal */
+      --secondary: #3b82f6; /* Blue */
+      --accent: #a855f7; /* Purple */
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+      --glass-highlight: rgba(255, 255, 255, 0.05);
+      --radius: 24px;
     }
 
     * {
       box-sizing: border-box;
+      outline: none;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
     }
 
+    /* Animated Background Mesh */
+    .bg-mesh {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      background: radial-gradient(circle at 15% 50%, rgba(45, 212, 191, 0.15), transparent 25%),
+                  radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.15), transparent 25%);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 10s infinite ease-in-out alternate;
+    }
+
+    .blob-1 { width: 400px; height: 400px; background: var(--secondary); top: -100px; left: -100px; opacity: 0.2; }
+    .blob-2 { width: 500px; height: 500px; background: var(--primary); bottom: -150px; right: -150px; opacity: 0.15; animation-delay: -2s; }
+    .blob-3 { width: 300px; height: 300px; background: var(--accent); top: 40%; left: 40%; opacity: 0.15; animation-delay: -5s; }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(20px, 40px) scale(1.1); }
+    }
+
+    /* Main Container */
     .wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-    }
-
-    .card {
       width: 100%;
-      max-width: 980px;
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 28px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 34px;
-      border-radius: var(--card-radius);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo {
-      width: 62px;
-      height: 62px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), #34b1ff);
+      padding: 20px;
       display: flex;
       justify-content: center;
+    }
+
+    .main-card {
+      width: 100%;
+      max-width: 1100px;
+      background: var(--card-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Decorative Top Line */
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+      opacity: 0.7;
+    }
+
+    /* Left Content Section */
+    .content-side {
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo-badge {
+      display: inline-flex;
       align-items: center;
-      font-weight: 700;
-      font-size: 28px;
-      color: #012;
+      gap: 10px;
+      margin-bottom: 30px;
     }
 
-    .brand {
+    .logo-box {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: #000;
       font-size: 20px;
-      font-weight: 700;
     }
 
-    .tag {
-      font-size: 13px;
-      color: var(--muted);
+    .status-pill {
+      background: rgba(45, 212, 191, 0.1);
+      color: var(--primary);
+      border: 1px solid rgba(45, 212, 191, 0.2);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     h1 {
-      margin: 12px 0 10px;
-      font-size: 30px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 56px;
+      line-height: 1.1;
+      margin: 0 0 20px 0;
+      background: linear-gradient(135deg, #fff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-weight: 700;
+    }
+
+    .domain-highlight {
+      color: var(--primary);
+      -webkit-text-fill-color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .domain-highlight::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 12px;
+        background: var(--primary);
+        opacity: 0.2;
+        transform: skewX(-15deg);
+        z-index: -1;
     }
 
     p.lead {
-      margin: 0;
-      color: var(--muted);
+      color: var(--text-muted);
+      font-size: 18px;
       line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 90%;
     }
 
-    input,
-    textarea {
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #e2e8f0;
+      font-size: 15px;
+    }
+
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary);
+    }
+
+    /* Right Form Section */
+    .form-side {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 60px 50px;
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-header {
+      margin-bottom: 30px;
+    }
+
+    .form-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      margin: 0 0 8px 0;
+    }
+
+    .form-header p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    
+    .input-group.textarea-group .input-icon {
+        top: 20px;
+        transform: none;
+    }
+
+    input, textarea {
       width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text);
-      margin-bottom: 12px;
-      resize: none;
-    }
-
-    textarea {
-      height: 110px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 11px 16px;
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      font-weight: 700;
-      cursor: pointer;
-      text-align: center;
+      border-radius: 12px;
+      padding: 14px 14px 14px 46px;
+      color: #fff;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+      line-height: 1.5;
+    }
+
+    input:focus, textarea:focus {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+    
+    input:focus + .input-icon, textarea:focus + .input-icon {
+        color: var(--secondary);
+    }
+
+    button.btn-primary {
       width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #0f172a;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
     }
 
-    .btn-primary {
-      background: linear-gradient(90deg, #00c2a8, #2bb7ff);
-      color: #012430;
+    button.btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(45, 212, 191, 0.4);
+    }
+    
+    button.btn-primary:active {
+        transform: translateY(0);
     }
 
-    .right {
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 14px;
+    .direct-email {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    
+    .direct-email a {
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    
+    .direct-email a:hover {
+        color: var(--primary);
     }
 
-    @media (max-width: 880px) {
-      .card {
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .main-card {
         grid-template-columns: 1fr;
-        padding: 22px;
+        max-width: 600px;
       }
 
-      .right {
-        order: 2;
+      .form-side {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding: 40px 30px;
       }
+
+      .content-side {
+        padding: 40px 30px;
+        text-align: center;
+      }
+
+      .logo-badge {
+        margin: 0 auto 30px auto;
+      }
+      
+      h1 {
+          font-size: 42px;
+      }
+      
+      .features {
+          text-align: left;
+      }
+    }
+    
+    @media (max-width: 480px) {
+        h1 { font-size: 36px; }
+        .features { grid-template-columns: 1fr; }
+        .content-side, .form-side { padding: 30px 20px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <main class="card">
-      <section>
-        <header>
-          <div class="logo">P</div>
-          <div>
-            <div class="brand">Peerup <span class="tag"> • domain for sale</span></div>
-            <div class="tag">Premium short brandable domain</div>
-          </div>
-        </header>
 
-        <h1>Peerup — A premium brandable domain</h1>
+  <div class="bg-mesh">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="wrap">
+    <main class="main-card">
+      
+      <section class="content-side">
+        <div class="logo-badge">
+          <div class="logo-box">P</div>
+          <div class="status-pill"><i class="ri-price-tag-3-line" style="margin-right:4px"></i> On Sale</div>
+        </div>
+
+        <h1>Acquire <br><span class="domain-highlight">Peerup.in</span></h1>
+        
         <p class="lead">
-          The domain <strong>Peerup.in</strong> is available for purchase.
-          Perfect for social platforms, SaaS tools, community apps, networking products, and marketplaces.
+          Short, memorable, and brandable. The perfect identity for your next social platform, community app, or SaaS startup.
         </p>
 
-        <footer style="margin-top:20px">
-          <div class="tag">Status: <strong>For Sale</strong></div>
-        </footer>
+        <div class="features">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="ri-check-line"></i></div>
+            <span>Premium 6-letter brand</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="ri-check-line"></i></div>
+            <span>Easy to spell & recall</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="ri-check-line"></i></div>
+            <span>Great for Tech/Social</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="ri-check-line"></i></div>
+            <span>Instant transfer available</span>
+          </div>
+        </div>
       </section>
 
-      <aside class="right">
-        <h3>Quick message</h3>
-        <p class="tag">Send your offer or inquiry. Email only.</p>
+      <aside class="form-side">
+        <div class="form-header">
+          <h3>Make an Offer</h3>
+          <p>Send your serious offer or inquiry below.</p>
+        </div>
 
         <form id="contactForm">
-          <input name="from_name" placeholder="Your name" required />
-          <input name="from_email" placeholder="Your email" required />
-          <input name="title" placeholder="Subject (optional)" />
-          <textarea name="message" placeholder="Your message / offer" required></textarea>
+          <div class="input-group">
+            <input name="from_name" placeholder="Your Name" required />
+            <i class="ri-user-line input-icon"></i>
+          </div>
 
-          <button type="submit" class="btn btn-primary" id="sendBtn">Send Offer</button>
+          <div class="input-group">
+            <input name="from_email" type="email" placeholder="Email Address" required />
+            <i class="ri-mail-line input-icon"></i>
+          </div>
+
+          <div class="input-group">
+            <input name="title" placeholder="Offer Amount (USD/INR)" />
+            <i class="ri-money-dollar-circle-line input-icon"></i>
+          </div>
+
+          <div class="input-group textarea-group">
+            <textarea name="message" placeholder="Message or additional details..." required></textarea>
+            <i class="ri-chat-1-line input-icon"></i>
+          </div>
+
+          <button type="submit" class="btn-primary" id="sendBtn">
+            Send Inquiry <i class="ri-arrow-right-line" style="vertical-align: middle; margin-left: 5px;"></i>
+          </button>
         </form>
 
-        <p class="tag" style="margin-top:12px">
-          Or email directly:<br>
-          <strong>phanivushakola@gmail.com</strong>
-        </p>
+        <div class="direct-email">
+          Prefer email? <a href="mailto:phanivushakola@gmail.com">phanivushakola@gmail.com</a>
+        </div>
       </aside>
+
     </main>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
+    // Initialize EmailJS
     emailjs.init("R4gh1k18fjvCjwhwG");
 
     const form = document.getElementById("contactForm");
@@ -204,29 +469,43 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      sendBtn.textContent = "Sending...";
+      
+      const originalText = sendBtn.innerHTML;
+      sendBtn.innerHTML = "Sending <i class='ri-loader-4-line'></i>";
+      sendBtn.style.opacity = "0.7";
       sendBtn.disabled = true;
 
       const formData = {
         user_name: form.from_name.value,
         user_email: form.from_email.value,
-        title: form.title.value || "New Inquiry",
+        title: form.title.value || "New Inquiry for Peerup.in",
         user_message: form.message.value,
       };
 
       try {
         await emailjs.send("service_ewrpwr4", "template_0jqx50c", formData);
-        alert("Message sent successfully!");
+        
+        // Success State
+        sendBtn.innerHTML = "Sent Successfully <i class='ri-check-line'></i>";
+        sendBtn.style.background = "#10b981"; // Green color
         form.reset();
+        
+        setTimeout(() => {
+            sendBtn.innerHTML = originalText;
+            sendBtn.style.background = ""; // Reset color
+            sendBtn.style.opacity = "1";
+            sendBtn.disabled = false;
+        }, 3000);
+        
       } catch (err) {
         console.error("EmailJS Error:", err);
-        alert("Failed to send message. Check console for details.");
+        alert("Failed to send message. Please try emailing directly.");
+        
+        sendBtn.innerHTML = originalText;
+        sendBtn.style.opacity = "1";
+        sendBtn.disabled = false;
       }
-
-      sendBtn.textContent = "Send Offer";
-      sendBtn.disabled = false;
     });
   </script>
 </body>
-
 </html>
